@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aws-csharp", "aws-csharp.csproj", "{D6B0D6F6-1C9F-46ED-B5A2-603FCF3EBE74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aws-csharp", "./src/aws-csharp.csproj", "{D6B0D6F6-1C9F-46ED-B5A2-603FCF3EBE74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
