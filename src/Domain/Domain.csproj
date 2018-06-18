@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gadx.Api\GdaxApi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Amazon.Lambda.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604">
+      <HintPath>..\..\..\..\.nuget\packages\amazon.lambda.core\1.0.0\lib\netstandard1.3\Amazon.Lambda.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FunctionalWay" Version="0.4.0" />
+    <PackageReference Include="SanPellgrino" Version="0.1.3" />
+  </ItemGroup>
+</Project>
