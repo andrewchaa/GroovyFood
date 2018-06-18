@@ -1,5 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
+using Domain.Models;
+using GdaxApi.Models;
+using GroovyFood.Domain;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 namespace Handlers
@@ -8,12 +13,13 @@ namespace Handlers
     {
         private IServiceProvider _services;
 
-        public Response Hello(Request request, ILambdaLogger logger)
+        public async Task<IEnumerable<Candle>> Hello(Request request)
         {
-            _services = DependencyContainer.GetServiceProvider(logger);
-
-            logger.Log("Serverless testing");
-            return new Response("Go Serverless v1.0! Your function executed successfully!", request);
+            var ratesRepository = new RatesRepository();
+            var candles = await ratesRepository.GetDailyRates(Coin.ETH, 10);
+            
+            Console.WriteLine("Serverless testing");
+            return candles;
         }
     }
 

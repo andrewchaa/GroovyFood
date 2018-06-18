@@ -24,9 +24,8 @@ namespace GroovyFood.Domain
         private readonly ILambdaLogger _logger;
         private readonly RequestAuthenticator _authenticator;
 
-        public RatesRepository(ILambdaLogger logger)
+        public RatesRepository()
         {
-            _logger = logger;
             _authenticator = (EnvironmentVariables.ApiKey, 
                     EnvironmentVariables.Passphrase, 
                     EnvironmentVariables.ApiSecret)
