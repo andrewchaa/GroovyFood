@@ -5,14 +5,14 @@ using Amazon.Lambda.Core;
 using Domain.Models;
 using GdaxApi.Models;
 using GroovyFood.Domain;
+using Handlers.ViewModels;
+using SanPellgrino;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 namespace Handlers
 {
-    public class Handler
+    public class RateHandler
     {
-        private IServiceProvider _services;
-
         public async Task<IEnumerable<Candle>> Hello(Request request)
         {
             var ratesRepository = new RatesRepository();
@@ -22,11 +22,17 @@ namespace Handlers
             
             return candles;
         }
-    }
 
-    public class Request
-    {
-        public int Days {get; set;}
-        public Coin Coin {get; set;}
+        public async Task<IEnumerable<Candle>> Daily(int days)
+        {
+            var ratesRepository = new RatesRepository();
+
+            var candles = new List<Candle>();
+            candles.AddRange(await ratesRepository.GetDailyRates(Coin.BTC, days));
+            candles.AddRange(await ratesRepository.GetDailyRates(Coin.ETH, days));
+            candles.AddRange(await ratesRepository.GetDailyRates(Coin.LTC, days));
+            
+            return candles;
+        }
     }
 }
